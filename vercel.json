@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "public": true,
   "builds": [
     {
       "src": "api/server.js",
@@ -16,6 +15,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "root": "public"
+  ]
 }
