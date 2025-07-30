@@ -1,17 +1,40 @@
 // server.js
 
+// api/server.js
+
 require("dotenv").config();
 const express = require("express");
-const cors = require("cors");
+const cors = require("cors"); // Import CORS
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const app = express();
 const port = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+// >>>>>> PERUBAHAN CORS DI SINI <<<<<<
+// Untuk produksi di Vercel, batasi originnya
+const allowedOrigins = [
+  "http://localhost:5500", // Untuk development lokal dengan Live Server
+  "http://localhost:3000", // Kalau kamu develop lokal pakai port lain
+  "https://projectapipi.vercel.app", // Ganti ini dengan domain Vercel-mu nanti!
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // izinkan request tanpa origin (misal mobile apps, postman, atau sama domain)
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
+// >>>>>> AKHIR PERUBAHAN CORS <<<<<<
 app.use(express.json());
 
+// ... (sisa kode server.js tetap sama) ...
 // Inisialisasi Gemini AI
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 

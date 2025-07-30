@@ -1,21 +1,21 @@
 /* Styling yang sudah ada */
 html {
-  scroll-behavior: smooth; /* Ini yang bikin scroll mulus! */
+  scroll-behavior: smooth;
 }
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Penting: padding/border tidak menambah lebar/tinggi elemen */
+  box-sizing: border-box;
 }
 
 body {
   font-family: "Arial", sans-serif;
-  background: #1a2320; /* Ini background fallback, gradientnya ada di .hero-background */
+  background: #1a2320;
   min-height: 100vh;
   color: #ffffff;
-  overflow-x: hidden; /* <<<<<< HARUS ADA DAN TIDAK DITIMPA */
-  position: relative; /* Untuk containment yang lebih baik */
+  overflow-x: hidden; /* Mencegah scroll horizontal global */
+  position: relative;
 }
 
 /* Hero Background with Gradient */
@@ -27,9 +27,9 @@ body {
     #1e2f28 84.03%,
     #1a2320 100%
   );
-  position: relative; /* Penting agar elemen absolute di dalamnya (seperti lingkaran) bisa diatur posisinya relatif terhadap ini */
-  padding-top: 150px; /* Tambah padding atas agar konten hero tidak terlalu mepet ke nav */
-  padding-bottom: 100px; /* Tambah padding bawah untuk ruang */
+  position: relative;
+  padding-top: 150px;
+  padding-bottom: 100px;
 }
 
 /* Navigation */
@@ -37,7 +37,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 0; /* Tambah padding atas/bawah agar nav lebih turun dari atas layar */
+  padding: 40px 0;
   gap: 50px;
   position: fixed;
   top: 0;
@@ -72,8 +72,7 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Padding ini akan mengatur jarak konten dari tepi kiri/kanan. */
-  padding: 0 10%; /* Vertikal 0, Horizontal 10% dari viewport width */
+  padding: 0 10%;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -87,22 +86,22 @@ nav a:hover {
   font-weight: 700;
   color: #caf1dd;
   line-height: 1;
-  margin-bottom: 15px; /* Perkiraan jarak dari h1 ke h2 */
+  margin-bottom: 15px;
 }
 
 .hero h2 {
   font-size: 18px;
-  font-weight: 400; /* Asumsi lebih tipis dari h1 */
+  font-weight: 400;
   color: #ffffff;
   line-height: 1;
-  margin-bottom: 30px; /* Perkiraan jarak dari h2 ke paragraf */
+  margin-bottom: 30px;
 }
 
 .hero p {
   font-size: 16px;
   color: #ffffff;
   line-height: 1.6;
-  margin-bottom: 40px; /* Perkiraan jarak dari paragraf ke tombol */
+  margin-bottom: 40px;
 }
 
 .view-more-btn {
@@ -131,24 +130,19 @@ nav a:hover {
   height: 400px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  /* >>>>>> PERUBAHAN DI SINI <<<<<< */
-  background: transparent; /* Hapus background color karena sudah ada gambar */
-  overflow: hidden; /* Penting: Memastikan gambar terpotong sesuai bentuk lingkaran */
-  /* >>>>>> AKHIR PERUBAHAN <<<<<< */
+  background: #d9d9d9;
   position: absolute;
-  top: 120px; /* Perkiraan posisi lingkaran dari atas hero-background */
-  right: 15%; /* Perkiraan posisi lingkaran dari kanan hero-background */
+  top: 120px;
+  right: 15%;
 }
 
-/* >>>>>> STYLING BARU UNTUK GAMBAR DI DALAM LINGKARAN <<<<<< */
 .product-circle img.circle-image {
-  width: 100%; /* Membuat gambar mengisi lebar lingkaran */
-  height: 100%; /* Membuat gambar mengisi tinggi lingkaran */
-  object-fit: cover; /* Memastikan gambar mengisi penuh area, mungkin terpotong */
-  /* object-fit: contain; /* Alternatif: Jika ingin gambar selalu terlihat utuh (tidak terpotong), tapi mungkin ada space kosong di sisi gambar */
-  display: block; /* Menghilangkan margin/space default pada img */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%; /* Pastikan ini 50% agar gambar ikut bulat */
+  display: block;
 }
-/* >>>>>> AKHIR STYLING BARU <<<<<< */
 
 /* Chat Section */
 .chat-section {
@@ -161,7 +155,7 @@ nav a:hover {
 
 .chat-section h3 {
   font-size: 18px;
-  color: #ffffff; /* Sesuaikan warna dari Figma jika beda */
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
@@ -175,35 +169,30 @@ nav a:hover {
   position: relative;
   max-width: 600px;
   margin: 0 auto;
-  display: flex; /* Jadikan ini flex container */
-  flex-direction: column; /* Atur item-nya (chat-box) memanjang ke bawah */
-  height: auto; /* Izinkan dia membesar sesuai kontennya */
+  display: flex;
+  flex-direction: column;
+  height: auto;
 }
 
 /* Styling untuk Chatbox (wadah history & input) */
 .chat-box {
-  background: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); /* Warna background chatbox, sesuaikan dari Figma */
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 12px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  height: 240px; /* DEFAULT TINGGI CHATBOX: 240px */
-  overflow: hidden; /* Sembunyikan scrollbar di default state */
-  transition: height 0.5s ease-in-out, max-width 0.5s ease-in-out; /* Animasi perubahan tinggi dan lebar */
-  flex-grow: 1; /* Izinkan chat-box ini memanjang di dalam parent flex-nya */
+  height: 240px;
+  overflow: hidden;
+  transition: height 0.5s ease-in-out, max-width 0.5s ease-in-out;
+  flex-grow: 1;
 }
 
 /* Styling untuk area riwayat chat */
 .chat-history {
-  flex-grow: 1; /* Agar mengambil sisa ruang di chat-box */
-  overflow-y: hidden; /* Sembunyikan scroll di default */
-  padding-right: 5px; /* Sedikit padding untuk estetika scrollbar */
-  display: flex; /* Untuk menata pesan secara kolom */
+  flex-grow: 1;
+  overflow-y: hidden;
+  padding-right: 5px;
+  display: flex;
   flex-direction: column;
 }
 
@@ -218,22 +207,22 @@ nav a:hover {
 }
 
 .ai-message {
-  background-color: #3b413f; /* Warna bubble AI, bisa sesuaikan dari Figma */
+  background-color: #3b413f;
   color: #e6e6e6;
-  align-self: flex-start; /* Rata kiri */
+  align-self: flex-start;
 }
 
 .user-message {
-  background-color: #507b65; /* Warna bubble user, bisa sesuaikan dari Figma */
+  background-color: #507b65;
   color: #ffffff;
-  align-self: flex-end; /* Rata kanan */
+  align-self: flex-end;
 }
 
 /* Styling untuk area input (textbox dan tombol) */
 .chat-input-area {
   display: flex;
   gap: 10px;
-  margin-top: 15px; /* Jarak dari chat history */
+  margin-top: 15px;
 }
 
 /* Styling untuk input textbox */
@@ -246,7 +235,7 @@ nav a:hover {
   font-size: 16px;
   color: rgba(255, 255, 255, 0.5);
   outline: none;
-  flex-grow: 1; /* Agar mengambil sisa lebar dalam chat-input-area */
+  flex-grow: 1;
 }
 
 #chatInput::placeholder {
@@ -265,7 +254,7 @@ nav a:hover {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #ffffff; /* Warna icon panah */
+  color: #ffffff;
 }
 
 /* ========================================================= */
@@ -273,15 +262,15 @@ nav a:hover {
 /* ========================================================= */
 
 body.chat-active .chat-box {
-  height: 280px; /* TINGGI CHATBOX SAAT AKTIF: 280px */
-  max-width: 100%; /* Kotak chat mengisi lebar chat-section (jika perlu) */
-  border-radius: 12px; /* Pastikan konsisten */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Tambah shadow biar menonjol */
-  overflow-y: auto; /* PENTING: Aktifkan scrollbar di state aktif */
+  height: 280px;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
 }
 
 body.chat-active .chat-history {
-  overflow-y: auto; /* PENTING: Pastikan ini juga 'auto' saat aktif */
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #888 #555;
 }
@@ -302,14 +291,14 @@ body.chat-active .chat-history::-webkit-scrollbar-thumb {
   padding: 80px 10% 60px;
   max-width: 1400px;
   margin: 0 auto;
-  display: flex; /* Jadikan flex container */
-  flex-direction: column; /* Susun item ke bawah */
-  align-items: center; /* Pusat semua item (termasuk h3 dan h2) secara horizontal */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .product-section h3 {
   font-size: 18px;
-  color: #ffffff; /* Sesuaikan warna dari Figma jika beda */
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
@@ -322,63 +311,48 @@ body.chat-active .chat-history::-webkit-scrollbar-thumb {
 .product-grid {
   display: flex;
   gap: 30px;
-  overflow-x: auto; /* Ini yang bikin dia bisa scroll horizontal */
+  overflow-x: auto;
   padding-bottom: 20px;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  justify-content: flex-start; /* Mengatur item dari awal grid */
+  justify-content: center;
 
-  /* >>>>>> PERBAIKAN KRUSIAL UNTUK LEBAR GRID AGAR 3.5 GAMBAR MUNCUL <<<<<< */
-  /* Hitungan: 3 kartu (3*300px) + 3 gap (3*30px) + 0.5 kartu (0.5*300px) = 1140px */
-  /* Ini adalah lebar VISIBLE product-grid */
-  width: 1140px; /* Atur lebar container agar hanya 3.5 kartu terlihat */
-  max-width: calc(
-    100vw - 100px
-  ); /* Batasi agar tidak lebih lebar dari viewport - padding global */
-  /* 100px adalah asumsi padding total dari parent section */
-  margin: 0 auto; /* Tengahin product-grid itu sendiri di dalam product-section */
-  /* Padding internal ini agar ada jarak dari tepi grid */
-  padding-left: 50px; /* Memberikan offset dari kiri */
-  padding-right: 50px; /* Memberikan offset dari kanan */
-  /* >>>>>> AKHIR PERBAIKAN KRUSIAL <<<<<< */
+  width: 1140px;
+  max-width: calc(100vw - 100px);
+  margin: 0 auto;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
-/* Ini adalah pseudo-element khusus untuk menyembunyikan scrollbar di Chrome, Safari, Edge, Opera */
 .product-grid::-webkit-scrollbar {
-  display: none; /* Ini yang paling sering dipakai */
-  width: 0; /* Pastikan lebarnya nol juga */
-  height: 0; /* Pastikan tingginya nol untuk scrollbar horizontal */
+  display: none;
+  width: 0;
+  height: 0;
 }
 
-/* Styling untuk .product-card - KEMBALI KE GAYA SEDERHANA */
-/* Styling untuk .product-card - KEMBALI KE GAYA SEDERHANA */
 .product-card {
-  background: #3b413f; /* Warna background kartu, akan ditutupi gambar */
+  background: #3b413f;
   border-radius: 12px;
-  min-width: 300px; /* Lebar minimum kartu */
-  height: 200px; /* Tinggi default kartu */
+  min-width: 300px;
+  height: 200px;
   flex-shrink: 0;
   cursor: grab;
-  /* padding: 20px; <-- Hapus padding ini jika gambar ingin mengisi penuh sampai tepi */
+  padding: 20px;
   box-sizing: border-box;
-  display: flex; /* Untuk menata konten di dalamnya */
-  justify-content: center; /* Pusat konten (jika ada placeholder/gambar) */
-  align-items: center; /* Pusat konten (jika ada placeholder/gambar) */
-  color: #e6e6e6; /* Warna teks placeholder kalau ada */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e6e6e6;
   font-size: 18px;
-  /* Jika kamu ingin gambar menutupi seluruh background card,
-     kamu bisa hapus background-color di .product-card ini. */
 }
 
-/* >>>>>> TAMBAHAN STYLING UNTUK GAMBAR DI DALAM KARTU <<<<<< */
 .product-card img.product-image {
-  width: 100%; /* Membuat gambar mengisi lebar kartu */
-  height: 100%; /* Membuat gambar mengisi tinggi kartu */
-  object-fit: cover; /* Penting: Memastikan gambar mengisi penuh area tanpa terdistorsi.
-                           Jika rasionya beda, gambar akan dipotong. */
-  border-radius: 12px; /* Sesuaikan dengan border-radius kartu */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
 }
-/* >>>>>> AKHIR TAMBAHAN STYLING GAMBAR <<<<<< */
 
 /* Team Section */
 .team-section {
@@ -406,13 +380,10 @@ body.chat-active .chat-history::-webkit-scrollbar-thumb {
   max-width: 800px;
   height: calc(800px * 5 / 7);
   margin: 0 auto;
-  /* >>>>>> TAMBAHKAN PROPERTI BACKGROUND DI SINI <<<<<< */
-  background-image: url("/images/sayur.jpg"); /* Sesuaikan path dengan lokasi file foto kamu */
-  background-size: cover; /* Membuat gambar mengisi seluruh kotak */
-  background-position: center; /* Memposisikan gambar di tengah kotak */
-  /* Hapus background color karena sudah diganti gambar */
+  background-image: url("/images/sayur.jpg");
+  background-size: cover;
+  background-position: center;
   background-color: transparent;
-  /* >>>>>> AKHIR TAMBAHAN PROPERTI BACKGROUND <<<<<< */
 }
 
 /* Footer */

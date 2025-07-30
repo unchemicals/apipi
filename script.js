@@ -4,7 +4,7 @@ const sendMessageButton = document.getElementById("sendMessageButton");
 const chatHistory = document.getElementById("chatHistory");
 const body = document.body; // Mengambil elemen <body> untuk mengganti class
 
-// Fungsi untuk menambahkan pesan ke riwayat chat (ini yang sudah ada)
+// Fungsi untuk menambahkan pesan ke riwayat chat
 function appendMessage(text, senderClass, ...additionalClasses) {
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("chat-message", senderClass, ...additionalClasses);
@@ -59,14 +59,15 @@ async function sendMessage() {
 
   try {
     // 4. Kirim pesan ke backend Node.js (API kamu)
-    const response = await fetch("http://localhost:3001/api/chat", {
-      // Sesuaikan port jika kamu ubah di server.js
+    // >>>>>> INI SUDAH DIUBAH UNTUK DEPLOY VERCEL <<<<<<
+    const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ message: userMessage }),
     });
+    // >>>>>> AKHIR PERUBAHAN UNTUK VERCEL <<<<<<
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -109,3 +110,5 @@ chatInput.addEventListener("keypress", function (e) {
 // --- BAGIAN UNTUK PRODUK GRID (TANPA AUTO-SCROLL ATAU EXPAND) ---
 // (Semua kode JS terkait auto-scroll dan expandable card sudah dihapus dari sini)
 // Jika kamu ingin menambahkan fungsionalitas lain untuk produk di masa depan, tambahkan di sini.
+// Contoh: kamu bisa tambahkan console.log("Halaman dimuat, JS berjalan!"); di sini
+// Untuk memastikan script.js kamu termuat dan berjalan.
